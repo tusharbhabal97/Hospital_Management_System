@@ -123,8 +123,8 @@ public class HospitalManagementSystem {
             System.out.println("+-----------+------------------+");
             while (resultSet.next()){
                 int doctor_id=resultSet.getInt("doctor_id");
-                String appointment_id=resultSet.getString("appointment_date");
-                System.out.printf("| %-10s| %-17s|\n",doctor_id,appointment_id);
+                String appointment_date=resultSet.getString("appointment_date");
+                System.out.printf("| %-10s| %-17s|\n",doctor_id,appointment_date);
                 System.out.println("+-----------+------------------+");
             }
         }catch (SQLException e){
