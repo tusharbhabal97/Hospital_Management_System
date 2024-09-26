@@ -47,7 +47,7 @@ public class HospitalManagementSystem {
                         viewAppointments(connection,scanner,patient);
                         break;
                     case 6:
-                        break;
+                        return;
                     default:
                         System.out.println("Enter Valid choice ");
                 }
@@ -118,14 +118,15 @@ public class HospitalManagementSystem {
             preparedStatement.setInt(1,id);
             ResultSet resultSet=preparedStatement.executeQuery();
             System.out.println("Appointments ");
-            System.out.println("+-----------+------------------+");
-            System.out.println("| Doctor Id | Appointment Date |");
-            System.out.println("+-----------+------------------+");
+            System.out.println("+------------+-----------+------------------+");
+            System.out.println("| Your Id    | Doctor Id | Appointment Date |");
+            System.out.println("+------------+-----------+------------------+");
             while (resultSet.next()){
+                int patient_id=resultSet.getInt("patient_id");
                 int doctor_id=resultSet.getInt("doctor_id");
                 String appointment_date=resultSet.getString("appointment_date");
-                System.out.printf("| %-10s| %-17s|\n",doctor_id,appointment_date);
-                System.out.println("+-----------+------------------+");
+                System.out.printf("| %-12s| %-10s| %-17s|\n",patient_id,doctor_id,appointment_date);
+                System.out.println("+------------+-----------+------------------+");
             }
         }catch (SQLException e){
             e.printStackTrace();
